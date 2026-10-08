@@ -37,7 +37,7 @@ const Header = () => {
             </h1>
 
             <Suspense fallback={<p className="mt-1 min-h-6" />}>
-              <CurrentDate />
+             
             </Suspense>
           </div>
         </div>

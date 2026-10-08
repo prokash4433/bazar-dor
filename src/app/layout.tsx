@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import BannerPage from "@/components/Banner";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         
         <Header/>
+       
         {children}
+        
         
         
         </body>
