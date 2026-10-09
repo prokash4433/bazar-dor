@@ -14,9 +14,11 @@ export interface Product {
   image: string;
   today: number;
   yesterday: number;
+  lastWeek?: number;
+  lastMonth?: number;
   unit: string;
   change: {
-    dir: "up" | "down" | "flat";
+    dir: "up" | "down" | "flat" | "none";
     pct: number;
   };
 }

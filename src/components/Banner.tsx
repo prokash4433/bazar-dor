@@ -4,7 +4,10 @@
 import Image from "next/image";
 
 const BannerPage = () => {
-  // বাংলাদেশের তারিখ অনুযায়ী আজকের দিন দেখাবে
+  const date = new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+    timeZone: "Asia/Dhaka",
+  });
  
 
   return (
@@ -15,11 +18,7 @@ const BannerPage = () => {
         <div className="w-full md:max-w-[620px]">
 
           {/* Dynamic Bangladesh Date */}
-          <div className="mb-3 inline-flex rounded-md border border-green-500 p-[3px]">
-            {/* <span className="rounded-sm bg-green-50 px-3 py-1 text-sm font-medium text-green-700">
-              {today}
-            </span> */}
-          </div>
+          <p className="font-bold text-[#05893E]  p-2 rounded-2xl  ">{date}</p>
 
           {/* Heading */}
           <h1 className="text-2xl font-bold leading-tight text-[#202923] sm:text-3xl lg:text-4xl">
