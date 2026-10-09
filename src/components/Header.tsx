@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import { Suspense } from "react";
 import Image from "next/image";
 import { connection } from "next/server";
@@ -12,14 +11,18 @@ const CurrentDate = async () => {
     timeZone: "Asia/Dhaka",
   });
 
-  return <p className="mt-1 min-h-6 font-bold text-black">{date}</p>;
+  return (
+    <p className="mt-1 min-h-6 font-bold text-black">
+      {date}
+    </p>
+  );
 };
 
 const Header = () => {
   return (
     <header className="border-b border-gray-100 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        {/* Left Side - Logo + Website Name */}
+        {/* Logo + Website Name */}
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#05893E]">
             <Image
@@ -37,12 +40,12 @@ const Header = () => {
             </h1>
 
             <Suspense fallback={<p className="mt-1 min-h-6" />}>
-             
+              <CurrentDate />
             </Suspense>
           </div>
         </div>
 
-        {/* Right Side - Auth Buttons */}
+        {/* Auth Buttons */}
         <div className="flex items-center gap-3">
           <button className="rounded-lg border-2 border-gray-200 px-5 py-2 text-sm font-semibold text-black transition duration-200 hover:border-[#05893E] hover:text-[#05893E]">
             সাইন ইন
@@ -54,7 +57,11 @@ const Header = () => {
         </div>
       </div>
 
-      <NavLinks />
+      {/* Category Navigation */}
+      {/* <NavLinks /> */}
+      <Suspense fallback={<div className="h-10" />}>
+        <NavLinks />
+      </Suspense>
     </header>
   );
 };
