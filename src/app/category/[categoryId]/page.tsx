@@ -30,7 +30,10 @@ export default async function CategoryProducts({params}: CategoryPageProps) {
           const { categoryId } = await params;
 
           const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(categoryId)}`,{next: { revalidate: 100 },});
- 
+
+          if (!res.ok) {
+                    throw new Error("প্রোডাক্ট লোড করা যায়নি।");
+          }
 
           const result = await res.json();
 

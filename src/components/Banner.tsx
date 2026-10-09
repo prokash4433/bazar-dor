@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const BannerPage = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -34,12 +35,7 @@ const BannerPage = () => {
           </p>
 
           {/* Button */}
-          <button
-            type="button"
-            className="mt-7 rounded-lg bg-green-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition duration-200 hover:bg-green-800 hover:shadow-lg active:scale-95"
-          >
-            সব পণ্য দেখুন
-          </button>
+          <Link href="/products" className="mt-7 inline-block rounded-lg bg-green-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition duration-200 hover:bg-green-800 hover:shadow-lg active:scale-95" > সব পণ্য দেখুন </Link>
         </div>
 
         {/* Right Image */}
