@@ -1,7 +1,7 @@
 export default function Loading() {
           return (<main className="min-h-screen bg-[#f0f5f1] px-4 py-6 sm:px-6 lg:px-8"> <div className="mx-auto w-full max-w-6xl space-y-6 animate-pulse">
 
-                    ```
+                    
                     {/* Category Header Skeleton */}
                     <section className="flex items-center gap-4 rounded-2xl border border-[#dce5dd] bg-white p-5 sm:p-6">
                               <div className="h-14 w-14 shrink-0 rounded-2xl bg-gray-200" />
