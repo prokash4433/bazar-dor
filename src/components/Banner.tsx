@@ -8,17 +8,18 @@ const BannerPage = () => {
     dateStyle: "full",
     timeZone: "Asia/Dhaka",
   });
- 
 
   return (
-            <section className="rounded-3xl border border-gray-200 bg-[#f8fbf9] px-5 py-6 sm:px-8 sm:py-8 mx-auto max-w-7xl mt-6">
-      <div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
+    <section className="mx-auto mt-6 max-w-7xl rounded-3xl border border-gray-200 bg-[#f8fbf9] px-5 py-6 sm:px-8 sm:py-8">
+      <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
 
         {/* Left Content */}
         <div className="w-full md:max-w-[620px]">
 
           {/* Dynamic Bangladesh Date */}
-          <p className="font-bold text-[#05893E]  p-2 rounded-2xl  ">{date}</p>
+          <p className="rounded-2xl p-2 font-bold text-[#05893E]">
+            {date}
+          </p>
 
           {/* Heading */}
           <h1 className="text-2xl font-bold leading-tight text-[#202923] sm:text-3xl lg:text-4xl">
