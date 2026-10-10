@@ -64,10 +64,16 @@ const SignInPage = () => {
 
 // Google SignIn with authentication
 const handleGoogleSignIn = async() =>{
-  const data = await authClient.signIn.social({
+    await authClient.signIn.social({
     provider: "google",
   });
-  console.log(data)
+ 
+};
+
+const handleGithubSignIn = async() =>{
+    await authClient.signIn.social({
+    provider: "github",
+  })
 }
 
           return (
@@ -134,7 +140,8 @@ const handleGoogleSignIn = async() =>{
                      </button>
 
                      <button
-                     type="button"
+                        onClick={handleGithubSignIn}
+                     type="submit"
                      className="btn rounded-xl min-h-10 border border-[#dce5dc] bg-transparent px-2 text-xs text-[#202820] hover:bg-[#f0f5f0] sm:text-sm" >
                      <span className="font-bold">●</span>
                      GitHub দিয়ে চালিয়ে যান

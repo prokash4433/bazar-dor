@@ -2,9 +2,7 @@ import Link from "next/link";
 import type { Product } from "@/app/page";
 
 
-const API_URL =
-          "https://api.api-store.workers.dev/api/bazardor/products";
-
+const API_URL ="https://openapi.programming-hero.com/api/bazardor/products/";
 interface AllProductsProps {
           products: Product[];
 }

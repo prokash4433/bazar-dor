@@ -59,13 +59,20 @@ const SignUpPage = () => {
       }
     }
   };
-  // Google SignIn with authentication
+  
    // Google SignIn with authentication
    const handleGoogleSignIn = async() =>{
-     const data = await authClient.signIn.social({
+       await authClient.signIn.social({
        provider: "google",
      });
-     console.log(data)
+      
+   }
+  // Github SignIn with authentication
+   const handleGithubSignIn = async() =>{
+     await authClient.signIn.social({
+       provider: "github",
+     })
+      
    }
   return (
     <div>
@@ -149,7 +156,7 @@ const SignUpPage = () => {
 
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
-                                                                        onClick={handleGoogleSignIn}
+                                                                               onClick={handleGoogleSignIn}
                 type="button"
                 className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xl text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
               >
@@ -161,7 +168,8 @@ const SignUpPage = () => {
               </button>
 
               <button
-                type="button"
+                onClick={handleGithubSignIn}
+                type="submit"
                 className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xs text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
               >
                 <span className="font-bold">●</span>
