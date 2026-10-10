@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Product } from "@/app/page";
 
+
 const API_URL =
           "https://api.api-store.workers.dev/api/bazardor/products";
 
@@ -81,10 +82,10 @@ const AllProducts = ({ products = [] }: AllProductsProps) => {
 
                                                                                                     <span
                                                                                                               className={`shrink-0 rounded-xl px-2 py-1 text-xs font-bold ${isUp
-                                                                                                                                  ? "bg-[#F0F5F0] text-rose-600"
-                                                                                                                                  : isDown
-                                                                                                                                            ? "bg-[#F0F5F0] text-emerald-700"
-                                                                                                                                            : "bg-gray-100 text-gray-500"
+                                                                                                                        ? "bg-[#F0F5F0] text-rose-600"
+                                                                                                                        : isDown
+                                                                                                                                  ? "bg-[#F0F5F0] text-emerald-700"
+                                                                                                                                  : "bg-gray-100 text-gray-500"
                                                                                                                         }`}
                                                                                                     >
                                                                                                               {isUp ? "▲ " : isDown ? "▼ " : "— "}
