@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { connection } from "next/server";
 import NavLinks from "./NavLinks";
+import UserInfo from "./UserInfo";
 
 const CurrentDate = async () => {
   await connection();
@@ -53,22 +54,12 @@ const Header = () => {
         </div>
       </Link>
 
+      
       {/* Authentication Buttons */}
-      <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
-        <button
-          type="button"
-          className="rounded-lg border border-gray-300 px-2.5 py-2 text-xs font-semibold text-gray-800 transition-all duration-200 hover:border-[#05893E] hover:bg-green-50 hover:text-[#05893E] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#05893E] sm:border-2 sm:px-5 sm:text-sm"
-        >
-          সাইন ইন
-        </button>
-
-        <button
-          type="button"
-          className="rounded-lg bg-[#05893E] px-2.5 py-2 text-xs font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#047a36] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#05893E] sm:px-5 sm:text-sm"
-        >
-          সাইন আপ
-        </button>
-      </div>
+      <UserInfo/>
+    
+    
+    
     </div>
 
     {/* Category Navigation */}
