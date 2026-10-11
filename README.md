@@ -5,9 +5,9 @@ BazarDor is a user-friendly web application designed to make everyday market pri
 
 🚀 Live Project
 
-🔗 Live Link:  
+🔗 Live Link:  https://bazar-dor-alpha-five.vercel.app
 
-🔗 GitHub Repository: 
+🔗 GitHub Repository: https://github.com/prokash4433/bazar-dor
 
 
 
