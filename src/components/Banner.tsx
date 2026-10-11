@@ -11,7 +11,7 @@ const BannerPage = () => {
   });
 
   return (
-    <section className="mx-auto mt-6 max-w-7xl rounded-3xl border border-gray-200 bg-[#f8fbf9] px-5 py-6 sm:px-8 sm:py-8">
+    <section className="mx-auto  mt-6 max-w-7xl rounded-3xl border border-gray-200 bg-[#f8fbf9] px-5 py-6 sm:px-8 sm:py-8">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
 
         {/* Left Content */}

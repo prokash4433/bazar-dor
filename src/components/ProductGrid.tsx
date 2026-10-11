@@ -26,14 +26,14 @@ const ProductGrid = ({ products }: ProductGridProps) => {
                     const result = [...products];
 
                     if (sortBy === "low-to-high") {
-                              result.sort((a, b) => a.today - b.today);
+                    result.sort((a, b) => a.today - b.today);
                     }
 
                     if (sortBy === "high-to-low") {
-                              result.sort((a, b) => b.today - a.today);
+                    result.sort((a, b) => b.today - a.today);
                     }
 
-                    return result;
+          return result;
           }, [products, sortBy]);
 
           return (
@@ -96,10 +96,10 @@ const ProductGrid = ({ products }: ProductGridProps) => {
                     </h2>
 
                     <p className="mt-0.5 text-sm text-gray-500">
-                                                                                                                                প্রতি{" "}
-                                                                                                                               {product.unit === "kg"
-                                                                                                                                ? "কেজি"
-                                                                                                                                : product.unit}
+                                                                                                          প্রতি{" "}
+                      {product.unit === "kg"
+                      ? "কেজি"
+                      : product.unit}
                   </p>
                     </div>
                     </div>
@@ -112,39 +112,37 @@ const ProductGrid = ({ products }: ProductGridProps) => {
 
                     <div className="mt-1 flex items-center justify-between gap-2">
                     <p className="text-xl font-bold text-[#202b23]">
-                                                                                                                              {formatPrice(product.today)}{" "}
-                                                                                                                               <span className="text-sm font-medium">টাকা</span>
+                     {formatPrice(product.today)}{" "}
+                    <span className="text-sm font-medium">টাকা</span>
                     </p>
 
-                              {/* Price Change Badge */}
+                          {/* Price Change Badge */}
                    <span
-                                                                                                                                className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs   
-                                                                                                                                font-semibold ${isUp
-                                                                                                                                  ? "bg-red-50 text-red-600" 
-                                                                                                                                  : isDown
-                                                                                                                                            ? "bg-green-50 text-green-600"
-                                                                                                                                            : "bg-gray-100 text-gray-600"
-                                                                                                                                            }`}
-                                                                                                    >
-                                                                                                                                          {isUp ? (
-                                                                                                                                          <>
-                                                                                                                                  <span>▲</span>
-                                                                                                                                  {formatPercent(product.change.pct)}%
-                                                                                                                                        </>
-                                                                                                                                 ) : isDown ? (
-                                                                                                                                        <>
-                                                                                                                                  <span>▼</span>
-                                                                                                                                  {formatPercent(product.change.pct)}%
-                                                                                                                                    </>
-                                                                                                                                  ) : (
-                                                                                                                                <>— ০.০%</>
-                                                                                                                                    )}
-                                                  </span>
-                                        </div>
-                              </div>
+                   className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold 
+                    ${isUp
+                   ? "bg-red-50 text-red-600"
+                   : isDown
+                   ? "bg-green-50 text-green-600"
+                   : "bg-gray-100 text-gray-600"
+                                                                                                      }`}>
+                                                                                                      {isUp ? (
+                                                                                                       <>
+                    <span>▲</span>
+                    {formatPercent(product.change.pct)}%
+                                                                                                       </>
+                    ) : isDown ? (
+                    <>
+                    <span>▼</span>
+                    {formatPercent(product.change.pct)}%
+                                                                                                       </>
+                    ) : (
+                    <>— ০.০%</>
+                    )} 
+                    </span>
+                    </div>
+                     </div>
                     </article>
-                    );
-          })}
+                    );})}
                      </div>
                     ) : (
           

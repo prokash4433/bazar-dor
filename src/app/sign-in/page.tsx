@@ -1,5 +1,6 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
  
  
@@ -150,15 +151,21 @@ const handleGithubSignIn = async() =>{
 
                      <p className="mt-5 text-center text-sm text-[#202820]">
                      অ্যাকাউন্ট আছে?{" "}
-                     <span className="cursor-pointer text-[#05893e] hover:underline">
-                     সাইন আপ করুন
-                      </span>
+                      <Link
+                        href="/sign-up"
+                        className="cursor-pointer text-[#05893e] hover:underline"
+                      >
+                        সাইন আপ করুন
+                      </Link>
                                                             </p>
                                                   </form>
 
-                     <p className="mt-6 cursor-pointer text-sm text-[#737b73] hover:text-[#05893e]">
-                     ← হোম পেজে ফিরে যান
-                                          </p>
+                  <Link
+                    href="/"
+                    className="mt-6 block cursor-pointer text-sm text-[#737b73] hover:text-[#05893e]"
+                  >
+                    ← হোম পেজে ফিরে যান
+                  </Link>
 
                                         </div>
                               </div>

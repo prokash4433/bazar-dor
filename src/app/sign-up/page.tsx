@@ -1,29 +1,44 @@
- 
-'use client'
+
+"use client";
 
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const callbackURL = searchParams.get("callbackURL") || "/";
+
   const onSubmit = async (
-    e: React.SubmitEvent<HTMLElement>
+    e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
 
-    const user = Object.fromEntries(
-      formData.entries()
-    ) as {
-      name: string;
-      email: string;
-      password: string;
-    };
+    const name = String(formData.get("name") || "");
+    const email = String(formData.get("email") || "");
+    const password = String(formData.get("password") || "");
+    const confirmPassword = String(
+      formData.get("confirmPassword") || ""
+    );
+
+    if (password !== confirmPassword) {
+      toast.error("দুটি পাসওয়ার্ড একই নয়!", {
+        duration: 3000,
+        position: "top-center",
+      });
+      return;
+    }
 
     const { data, error } = await authClient.signUp.email({
-      ...user,
-      callbackURL: "/",
+      name,
+      email,
+      password,
+      callbackURL,
     });
 
     if (data) {
@@ -32,7 +47,8 @@ const SignUpPage = () => {
         position: "top-center",
       });
 
-      redirect("/");
+      router.push(callbackURL);
+      router.refresh();
     }
 
     if (error) {
@@ -41,7 +57,7 @@ const SignUpPage = () => {
         error.message?.includes("already registered")
       ) {
         toast.error(
-          "এই ইমেইল দিয়ে ইতোমধ্যে একটি অ্যাকাউন্ট রয়েছে। অনুগ্রহ করে অন্য ইমেইল ব্যবহার করুন।",
+          "এই ইমেইল দিয়ে ইতোমধ্যে একটি অ্যাকাউন্ট রয়েছে। অনুগ্রহ করে সাইন ইন করুন।",
           {
             duration: 4000,
             position: "top-center",
@@ -50,7 +66,7 @@ const SignUpPage = () => {
       } else {
         toast.error(
           error.message ||
-            "সাইন আপ করতে সমস্যা হয়েছে! অনুগ্রহ করে আবার চেষ্টা করুন।",
+          "সাইন আপ করতে সমস্যা হয়েছে! অনুগ্রহ করে আবার চেষ্টা করুন।",
           {
             duration: 4000,
             position: "top-center",
@@ -59,26 +75,25 @@ const SignUpPage = () => {
       }
     }
   };
-  
-   // Google SignIn with authentication
-   const handleGoogleSignIn = async() =>{
-       await authClient.signIn.social({
-       provider: "google",
-     });
-      
-   }
-  // Github SignIn with authentication
-   const handleGithubSignIn = async() =>{
-     await authClient.signIn.social({
-       provider: "github",
-     })
-      
-   }
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL,
+    });
+  };
+
+  const handleGithubSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL,
+    });
+  };
+
   return (
     <div>
       <div className="min-h-screen w-full bg-[#f0f5f0] px-4 py-6 sm:py-10">
         <div className="mx-auto flex min-h-[748px] w-full max-w-[696px] flex-col items-center px-4 py-10 sm:px-8">
-
           <div className="mb-7 text-center">
             <h1 className="text-2xl font-bold text-[#202820] sm:text-[28px]">
               অ্যাকাউন্ট তৈরি করুন
@@ -100,6 +115,7 @@ const SignUpPage = () => {
             <input
               name="name"
               type="text"
+              required
               placeholder="যেমন: রহিম উদ্দিন"
               className="input h-10 w-full rounded-lg border-[#dce5dc] bg-transparent text-sm"
             />
@@ -111,6 +127,7 @@ const SignUpPage = () => {
             <input
               name="email"
               type="email"
+              required
               placeholder="you@example.com"
               className="input h-10 w-full rounded-lg border-[#dce5dc] bg-transparent text-sm"
             />
@@ -122,6 +139,8 @@ const SignUpPage = () => {
             <input
               name="password"
               type="password"
+              required
+              minLength={8}
               placeholder="কমপক্ষে ৮ অক্ষর"
               className="input h-10 w-full rounded-lg border-[#dce5dc] bg-transparent text-sm"
             />
@@ -131,8 +150,10 @@ const SignUpPage = () => {
             </label>
 
             <input
-              name="password"
+              name="confirmPassword"
               type="password"
+              required
+              minLength={8}
               placeholder="আবার লিখুন"
               className="input h-10 w-full rounded-lg border-[#dce5dc] bg-transparent text-sm"
             />
@@ -156,41 +177,53 @@ const SignUpPage = () => {
 
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
-                                                                               onClick={handleGoogleSignIn}
+                onClick={handleGoogleSignIn}
                 type="button"
                 className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xl text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
               >
                 <span className="font-bold text-[#4285F4]">
                   G
                 </span>
-
                 Google দিয়ে চালিয়ে যান
               </button>
 
               <button
                 onClick={handleGithubSignIn}
-                type="submit"
+                type="button"
                 className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xs text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
               >
                 <span className="font-bold">●</span>
-
                 GitHub দিয়ে চালিয়ে যান
               </button>
             </div>
 
             <p className="mt-5 text-center text-sm text-[#202820]">
               অ্যাকাউন্ট আছে?{" "}
-
-              <span className="cursor-pointer text-[#05893e] hover:underline">
+              <Link
+                href="/sign-in"
+                type="button"
+                onClick={() => {
+                  router.push(
+                    `/login?callbackURL=${encodeURIComponent(callbackURL)}`
+                  );
+                }}
+                className="cursor-pointer text-[#05893e] hover:underline"
+              >
                 সাইন ইন করুন
-              </span>
+              
+              </Link>
             </p>
           </form>
-
-          <p className="mt-6 cursor-pointer text-sm text-[#737b73] hover:text-[#05893e]">
+           
+           <Link
+            href="/"
+            type="button"
+            onClick={() => router.push("/")}
+            className="mt-6 cursor-pointer text-sm text-[#737b73] hover:text-[#05893e]"
+          >
             ← হোম পেজে ফিরে যান
-          </p>
-
+           
+           </Link>
         </div>
       </div>
     </div>
@@ -198,4 +231,3 @@ const SignUpPage = () => {
 };
 
 export default SignUpPage;
- 

@@ -1,4 +1,8 @@
- 
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
+
+
 import type { Product } from "@/app/page";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -24,7 +28,7 @@ async function getProduct(
   productId: string
 ): Promise<ProductDetails | null> {
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
+    `https://openapi.programming-hero.com/api/bazardor/products/${productId}`,
 {
           next: { revalidate: 100 },
 }
@@ -73,12 +77,28 @@ const getUnit = (unit: string) =>
                               ? "লিটার"
                               : unit;
 
-export default async function ProductDetailsPage({
-          params,
-}: ProductDetailsPageProps) {
-          const { productId } = await params;
+ 
 
-          const product = await getProduct(productId);
+export default async function ProductDetailsPage({
+  params,
+}: ProductDetailsPageProps) {
+  const { productId } = await params;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect(
+      `/sign-in?callbackURL=${encodeURIComponent(
+        `/product/${productId}`
+      )}`
+    );
+  }
+
+  const product = await getProduct(productId);
+    
+  
 
           if (!product) {
                     notFound();
@@ -87,24 +107,7 @@ export default async function ProductDetailsPage({
           const isUp = product.change.dir === "up";
           const isDown = product.change.dir === "down";
 
-          // দামের সংক্ষিপ্তসারের কার্ড
-          const comparisonCards = [
-                    {
-                              label: "গতকালের দাম",
-                              price: product.yesterday,
-                    },
-                    {
-                              label: "গত সপ্তাহের দাম",
-                              price: product.lastWeek,
-                    },
-                    {
-                              label: "গত মাসের দাম",
-                              price: product.lastMonth,
-                    },
-          ].filter(
-                    (item): item is { label: string; price: number } =>
-                              typeof item.price === "number"
-          );
+             
 
           // বাজারের তথ্য
           const markets = Array.isArray(product.markets)

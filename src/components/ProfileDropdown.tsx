@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface ProfileDropdownProps {
   name?: string;
@@ -39,12 +40,7 @@ export default function ProfileDropdown({
         aria-haspopup="menu"
         className="flex max-w-full items-center gap-1.5 rounded-2xl border border-transparent bg-gray-100 px-2 py-1.5 text-sm text-gray-700 transition  hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-100 sm:gap-2 sm:px-3 sm:py-2 cursor-pointer"
       >
-        {/* Profile Avatar */}
-        {/* <span className="flex h-6 w-10 shrink-0 items-center justify-center rounded-md   p-0.5">
-          <span className="flex h-full w-full items-center justify-center rounded-xl bg-green-700 text-sm font-bold text-white">
-            {firstLetter}
-          </span>
-        </span> */}
+        
 
         <div className="avatar">
           <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-green-600 ring-offset-2">
@@ -137,11 +133,22 @@ export default function ProfileDropdown({
             </Link>
  
 
+             
+            {/* Sign Out */}
             {/* Sign Out */}
             <button
               type="button"
               role="menuitem"
-              onClick={handleSignOut}
+              onClick={() => {
+                toast.loading("আপনার প্রোফাইল থেকে সাইন আউট করা হচ্ছে...", {
+                  duration: 1500,
+                  style: {
+                    background: "#16a34a",
+                    color: "#ffffff",
+                  },
+                });
+                handleSignOut();
+              }}
               className="flex w-full items-center gap-2 px-4 py-3 text-left text-sm text-red-500 transition hover:bg-red-50"
             >
               <svg
@@ -161,6 +168,7 @@ export default function ProfileDropdown({
 
               সাইন আউট
             </button>
+            
 
           </div>
         </>
