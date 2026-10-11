@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+BazarDor — Smart Market Price Guide 
 
-## Getting Started
+Short Description:-
+BazarDor is a user-friendly web application designed to make everyday market price information more accessible.It provides product information, market-wise price details, average and minimum/maximum prices, and historical price trends to help users make informed purchasing decisions. Users can explore essential commodities such as rice, lentils, oil, vegetables, fish, meat, eggs, and spices, view price movements, and access detailed product information through a clean, responsive interface.
 
-First, run the development server:
+🚀 Live Project
+🔗 Live Link:  
+🔗 GitHub Repository: 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Technologies Used:-
+Next.js,
+React,
+TypeScript,
+Tailwind CSS,
+MongoDB,
+Better Auth,
+REST API Integration,
+Responsive Web Design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Five Key Features:-
+1.Wide Product Categories: Explore everyday essentials, including rice, lentils, oil, vegetables, fish, meat, eggs, and spices.
+2.Rising and Falling Prices: Quickly identify products with increasing or decreasing prices.
+3.Dynamic Product Listings: Fetches and displays product information, images, categories, units, and prices through an API.
+4.Supports email/password registration and login, along with Google and GitHub sign-in.
+5.Responsive User Interface: Browse market information through a clean green-and-white design across desktop and mobile screens.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ 
