@@ -4,12 +4,16 @@ Short Description:-
 BazarDor is a user-friendly web application designed to make everyday market price information more accessible.It provides product information, market-wise price details, average and minimum/maximum prices, and historical price trends to help users make informed purchasing decisions. Users can explore essential commodities such as rice, lentils, oil, vegetables, fish, meat, eggs, and spices, view price movements, and access detailed product information through a clean, responsive interface.
 
 🚀 Live Project
+
 🔗 Live Link:  
+
 🔗 GitHub Repository: 
 
-Technologies Used:-
-Next.js,
 
+
+Technologies Used:-
+
+Next.js,
 
 React,
 
@@ -27,6 +31,7 @@ Responsive Web Design.
 
 
 Five Key Features:-
+
 1.Wide Product Categories: Explore everyday essentials, including rice, lentils, oil, vegetables, fish, meat, eggs, and spices.
 
 2.Rising and Falling Prices: Quickly identify products with increasing or decreasing prices.
