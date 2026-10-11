@@ -2,6 +2,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
@@ -176,26 +177,40 @@ const SignUpPage = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <button
-                onClick={handleGoogleSignIn}
-                type="button"
-                className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xl text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
-              >
-                <span className="font-bold text-[#4285F4]">
-                  G
-                </span>
-                Google দিয়ে চালিয়ে যান
-              </button>
-
-              <button
-                onClick={handleGithubSignIn}
-                type="button"
-                className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-xs text-[#202820] hover:bg-[#f0f5f0] sm:text-sm"
-              >
-                <span className="font-bold">●</span>
-                GitHub দিয়ে চালিয়ে যান
-              </button>
-            </div>
+                                  {/* Google Sign In */}
+                                  <button
+                                    onClick={handleGoogleSignIn}
+                                    type="button"
+                                    className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-sm text-[#202820] hover:bg-[#f0f5f0]"
+                                  >
+                                    <Image
+                                      src="https://www.google.com/favicon.ico"
+                                      alt="Google"
+                                      width={20}
+                                      height={20}
+                                      className="h-5 w-5"
+                                      unoptimized
+                                    />
+                                    <span>Google দিয়ে চালিয়ে যান</span>
+                                  </button>
+            
+                                  {/* GitHub Sign In */}
+                                  <button
+                                    onClick={handleGithubSignIn}
+                                    type="button"
+                                    className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-sm text-[#202820] hover:bg-[#f0f5f0]"
+                                  >
+                                    <Image
+                                      src="https://github.githubassets.com/favicons/favicon.png"
+                                      alt="GitHub"
+                                      width={20}
+                                      height={20}
+                                      className="h-5 w-5"
+                                      unoptimized
+                                    />
+                                    <span>GitHub দিয়ে চালিয়ে যান</span>
+                                  </button>
+                                </div>
 
             <p className="mt-5 text-center text-sm text-[#202820]">
               অ্যাকাউন্ট আছে?{" "}

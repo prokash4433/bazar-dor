@@ -1,8 +1,4 @@
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
-
-
+ 
 import type { Product } from "@/app/page";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -44,7 +40,7 @@ if (!res.ok) {
 
 const data: unknown = await res.json();
 
-// API সরাসরি product object ফেরত দিলে
+// API direct product object back
 if (
           typeof data === "object" &&
           data !== null &&
@@ -77,27 +73,12 @@ const getUnit = (unit: string) =>
                               ? "লিটার"
                               : unit;
 
- 
-
 export default async function ProductDetailsPage({
   params,
 }: ProductDetailsPageProps) {
   const { productId } = await params;
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    redirect(
-      `/sign-in?callbackURL=${encodeURIComponent(
-        `/product/${productId}`
-      )}`
-    );
-  }
-
-  const product = await getProduct(productId);
-    
+  const product = await getProduct(productId);   
   
 
           if (!product) {
@@ -109,7 +90,7 @@ export default async function ProductDetailsPage({
 
              
 
-          // বাজারের তথ্য
+          // Market Information
           const markets = Array.isArray(product.markets)
                     ? product.markets
                     : [];

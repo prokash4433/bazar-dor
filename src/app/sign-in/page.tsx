@@ -1,4 +1,6 @@
 'use client'
+import Image from "next/image";
+ 
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -129,7 +131,10 @@ const handleGithubSignIn = async() =>{
                       <span className="text-xs text-[#737b73]">অথবা</span>
                    <div className="h-px flex-1 bg-[#dce5dc]" />
                     </div>
-                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    
+                    
+                    
+                    {/* <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                                                       
                                                                       
                      <button
@@ -147,8 +152,48 @@ const handleGithubSignIn = async() =>{
                      <span className="font-bold">●</span>
                      GitHub দিয়ে চালিয়ে যান
                      </button>
-                     </div>
+                     </div> */}
 
+                     
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {/* Google Sign In */}
+                      <button
+                        onClick={handleGoogleSignIn}
+                        type="button"
+                        className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-sm text-[#202820] hover:bg-[#f0f5f0]"
+                      >
+                        <Image
+                          src="https://www.google.com/favicon.ico"
+                          alt="Google"
+                          width={20}
+                          height={20}
+                          className="h-5 w-5"
+                          unoptimized
+                        />
+                        <span>Google দিয়ে চালিয়ে যান</span>
+                      </button>
+
+                      {/* GitHub Sign In */}
+                      <button
+                        onClick={handleGithubSignIn}
+                        type="button"
+                        className="btn min-h-10 rounded-xl border border-[#dce5dc] bg-transparent px-2 text-sm text-[#202820] hover:bg-[#f0f5f0]"
+                      >
+                        <Image
+                          src="https://github.githubassets.com/favicons/favicon.png"
+                          alt="GitHub"
+                          width={20}
+                          height={20}
+                          className="h-5 w-5"
+                          unoptimized
+                        />
+                        <span>GitHub দিয়ে চালিয়ে যান</span>
+                      </button>
+                    </div>
+                     
+
+
+                       
                      <p className="mt-5 text-center text-sm text-[#202820]">
                      অ্যাকাউন্ট আছে?{" "}
                       <Link
