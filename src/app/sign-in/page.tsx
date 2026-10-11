@@ -134,28 +134,7 @@ const handleGithubSignIn = async() =>{
                     
                     
                     
-                    {/* <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                                                                      
-                                                                      
-                     <button
-                     onClick={handleGoogleSignIn}
-                     type="button"
-                     className="btn rounded-xl min-h-10 border border-[#dce5dc] bg-transparent px-2 text-xl text-[#202820] hover:bg-[#f0f5f0] sm:text-sm">
-                     <span className="font-bold text-[#4285F4]">G</span>
-                     Google দিয়ে চালিয়ে যান
-                     </button>
-
-                     <button
-                        onClick={handleGithubSignIn}
-                     type="submit"
-                     className="btn rounded-xl min-h-10 border border-[#dce5dc] bg-transparent px-2 text-xs text-[#202820] hover:bg-[#f0f5f0] sm:text-sm" >
-                     <span className="font-bold">●</span>
-                     GitHub দিয়ে চালিয়ে যান
-                     </button>
-                     </div> */}
-
-                     
-                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                       {/* Google Sign In */}
                       <button
                         onClick={handleGoogleSignIn}
