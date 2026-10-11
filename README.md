@@ -9,12 +9,20 @@ BazarDor is a user-friendly web application designed to make everyday market pri
 
 Technologies Used:-
 Next.js,
+
+
 React,
+
 TypeScript,
+
 Tailwind CSS,
+
 MongoDB,
+
 Better Auth,
+
 REST API Integration,
+
 Responsive Web Design.
 
 
