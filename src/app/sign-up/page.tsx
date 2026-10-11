@@ -42,7 +42,7 @@ const SignUpPage = () => {
           error.message?.includes("already registered")
         ) {
           toast.error(
-            "এই ইমেইল দিয়ে ইতোমধ্যে একটি অ্যাকাউন্ট রয়েছে। অনুগ্রহ করে সাইন ইন করুন।",
+            "এই ইমেইল দিয়ে ইতোমধ্যে একটি অ্যাকাউন্ট রয়েছে। অনুগ্রহ করে আবার সাইন ইন করুন।",
             {
               duration: 4000,
               position: "top-center",
