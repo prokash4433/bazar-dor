@@ -44,6 +44,6 @@ Five Key Features:-
 
 5.Responsive User Interface: Browse market information through a clean green-and-white design across desktop and mobile screens.
 
-## Deploy on Vercel
+## Deploy on Vercel :https://bazar-dor-alpha-five.vercel.app
 
  
