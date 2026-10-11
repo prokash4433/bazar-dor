@@ -117,7 +117,41 @@ export default function ProfileDropdown({
             <Link
               href="/profile"
               role="menuitem"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => {
+                if (window.location.pathname === "/profile") {
+                  e.preventDefault();
+
+                  toast.error("আপনি ইতোমধ্যেই আপনার প্রোফাইলে প্রবেশ করেছেন!", {
+                    duration: 3000,
+                    style: {
+                      background: "#dc2626",
+                      color: "#ffffff",
+                      borderRadius: "12px",
+                      padding: "14px 18px",
+                      fontSize: "14px",
+                      fontWeight: "500",
+                    },
+                  });
+                } else {
+                  toast.success("আপনার প্রোফাইলে প্রবেশ করা হলো!", {
+                    duration: 3000,
+                    style: {
+                      background: "#16a34a",
+                      color: "#ffffff",
+                      borderRadius: "12px",
+                      padding: "14px 18px",
+                      fontSize: "14px",
+                      fontWeight: "500",
+                    },
+                    iconTheme: {
+                      primary: "#ffffff",
+                      secondary: "#16a34a",
+                    },
+                  });
+                }
+
+                setIsOpen(false);
+              }}
               className="flex items-center gap-2 px-4 py-3 text-sm text-gray-800 transition hover:bg-gray-50"
             >
               <svg
